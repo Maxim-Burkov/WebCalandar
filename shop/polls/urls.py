@@ -10,5 +10,4 @@ urlpatterns = [
     path('create_event/check_event', views.check_event, name='check_event'),
     path('redactor/', views.redactor, name='redactor'),
     path('redactor/<int:id>', views.redacting, name='redacting'),
-    # path('<int:id>/check_redactor', views.check_redactor, name='check_redactor')
 ]

@@ -55,7 +55,7 @@ def check_event(request):
         event.date = request.POST.get("date")
 
         event.save()
-        return render(request, 'polls/event_added.html')
+        return HttpResponseRedirect('/burkoff')
     else:
         return HttpResponse('Error in adding event')
 

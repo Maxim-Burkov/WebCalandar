@@ -1,25 +1,25 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
     <title>Создание события</title>
 </head>
 <body>
+<div class="event_form">
     <form method="POST" action="/burkoff/create_event/check_event">
         {% csrf_token %}
         <p>
-            <label>Название события</label><br>
-            <input type="text" name="name" />
+            <input type="text" name="name" placeholder="Название события"/>
         </p>
-        <p>
-            <label>Текст события</label><br>
-            <input type="text" name="text" />
-        </p>
+        <p><textarea class="event_text" name="text" placeholder="Введите событие"></textarea></p>
         <p>
             <label>Введите дату</label><br>
             <input type="date" name="date" />
         </p>
         <input type="submit" value="Сохранить" >
     </form>
+</div>
 </body>
 </html>
