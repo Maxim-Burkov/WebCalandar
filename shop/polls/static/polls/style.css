@@ -1,0 +1,35 @@
+h1 {
+    color: red;
+}
+
+section {
+    background-color: #ccc;
+    height: 450px;
+}
+
+.wrapper {
+   width: 90%;
+   max-width: 1170px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+
+/* Медиа-запрос для больших экранов */
+@media (min-width: 1170px) {
+    .wrapper {
+        max-width: 1170px;
+    }
+}
+
+.event_sec {
+
+}
+
+body {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}

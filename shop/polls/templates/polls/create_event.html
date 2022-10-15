@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание события</title>
+</head>
+<body>
+    <form method="POST" action="/burkoff/create_event/check_event">
+        {% csrf_token %}
+        <p>
+            <label>Название события</label><br>
+            <input type="text" name="name" />
+        </p>
+        <p>
+            <label>Текст события</label><br>
+            <input type="text" name="text" />
+        </p>
+        <p>
+            <label>Введите дату</label><br>
+            <input type="date" name="date" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+</body>
+</html>

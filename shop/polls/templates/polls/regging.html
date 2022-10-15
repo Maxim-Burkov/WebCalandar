@@ -5,8 +5,13 @@
     <title>Regging</title>
 </head>
 <body>
-    <form method="POST" action="create/">
+<a href="/login/vk-oauth2"><img src="/static/lvk.png" class="avatar-3" data-toggle="tooltip"></a>
+    <form method="POST" action="/burkoff/create/">
         {% csrf_token %}
+        <p>
+            <label>Введите ник</label><br>
+            <input type="text" name="nickname" />
+        </p>
         <p>
             <label>Введите имя</label><br>
             <input type="text" name="first_name" />

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мой профиль</title>
+</head>
+<body>
+    <h1></h1><a href="/burkoff">Домой</a></h>
+
+      <container class="profile">
+    <h2>{{ request.user.id }}</h2>
+    <h2>{{ request.user.username }}</h2>
+    <h2>{{ request.user.first_name }}</h2>
+    <h2>{{ request.user.last_name }}</h2>
+    <h2>{{ request.user.email }}</h2>
+    <h2>{{ request.user.date_joined }}</h2>
+        </container>
+
+</body>
+</html>

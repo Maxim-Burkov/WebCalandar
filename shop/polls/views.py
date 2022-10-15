@@ -1,30 +1,81 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User, Group
+
+from django.utils import timezone
+
 
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import User
-from .models import SimpleUser
+from .models import Person, Event
 
-def check_user(request):
-    user = User.objects.filter(id=1)
-    return render(request, 'polls/post_list.html', {'users': user})
-
-def redirected(request):
-    user = SimpleUser.objects.all()
-    return render(request, 'polls/redirected.html', {'users': user})
-
-def registration(request):
-    return render(request, 'polls/registration.html', {})
-
-def create(request):
-    if request.method == "POST":
-        simple_user = SimpleUser()
-        simple_user.first_name = request.POST.get("first_name")
-        simple_user.last_name = request.POST.get("last_name")
-        simple_user.email = request.POST.get("email")
-        simple_user.password = request.POST.get("password")
-        simple_user.save()
-    return HttpResponseRedirect("/burkoff/redirected")
-
+def standart_profile(request, id):
+    return render(request, 'polls/standart_profile.html')
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    if request.user == 'AnonymousUser':
+        return HttpResponse('Анонимус юзер')
+    external_id = request.user.id
+    event_exist = Event.objects.filter(external_id=external_id)
+    return render(request, 'polls/burkoff_shop.html', {'events': event_exist})
+
+def regging(request):
+    return render(request, 'polls/regging.html')
+
+def create(request):
+    group = Group.objects.get(name='none_prime_users')
+    if request.method == "POST":
+        nickname = request.POST.get("nickname")
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        is_staff = False
+
+        user = User.objects.create_user(username=nickname,
+                                        email=email,
+                                        password=password,
+                                        first_name=first_name,
+                                        last_name=last_name,
+                                        is_staff=is_staff)
+
+        user.groups.add(group)
+        return render(request, 'polls/regging_done.html', {'nickname': nickname})
+    else:
+        return HttpResponse('Error in registration. Just watch your username or check code')
+
+
+def create_event(request):
+    return render(request, 'polls/create_event.html')
+
+def check_event(request):
+    if request.method == "POST":
+        event = Event()
+        event.external_id = request.user.id
+        event.name = request.POST.get("name")
+        event.text = request.POST.get("text")
+        event.date = request.POST.get("date")
+
+        event.save()
+        return render(request, 'polls/event_added.html')
+    else:
+        return HttpResponse('Error in adding event')
+
+
+def redactor(request):
+    external_id = request.user.id
+    event_exist = Event.objects.filter(external_id=external_id)
+    return render(request, 'polls/redactor.html', {'events': event_exist})
+
+def redacting(request, id):
+    external_id = request.user.id
+    event_id = id
+    event_exist = Event.objects.filter(external_id=external_id, id=event_id)
+    return render(request, 'polls/redacting.html', {'events': event_exist})
+
+
+
+def check_redactor(request, id):
+    pass
+
+
+def email_message(request, email=None):
+    pass
