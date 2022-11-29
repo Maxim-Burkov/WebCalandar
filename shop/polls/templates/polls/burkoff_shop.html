@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+    <script src="{% static 'js/test.js' %}"></script>
+    <title>Main_shop</title>
+</head>
+<body>
+{% if request.user.is_authenticated %}
+
+<div class="header_top">
+<header>
+    <div class="title">Burkoff</div>
+    <div class="outlogin"><h1><a href="/accounts/logout">Выйти</a></h1></div>
+    <div class="user"><h1><a href="{% url 'standart_profile' request.user.id %}">{{ request.user }}</a></h1></div>
+
+</header>
+    <h2><a href="/burkoff/create_event">Создать событие</a></h2>
+</div>
+
+{% for event in events %}
+<section class="event_sec">
+    <div class="wrapper">
+        <p>{{ event.date|date:"d-m-Y" }}</p>
+        <h1><a class="event_name" href="/burkoff/redactor">{{ event.name }}</a></h1>
+        <p><textarea name="text" readonly>{{ event.text }}</textarea></p>
+        <p>{{ event.id }}</p>
+    </div>
+</section>
+{% endfor %}
+<nav>
+    <h1></h1>
+</nav>
+
+
+
+{% else %}
+  <h1><a href="/accounts/login">Войти</a></h1>
+  <h1><a href="/burkoff/regging">Зарегистрироваться</a></h1>
+{% endif %}
+
+{% for user in users %}
+    {{ user.first_name }}
+{% endfor %}
+
+</body>
+</html>
