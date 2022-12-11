@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="07e08fb4-8406-4bf8-9578-46d00e98871f" name="Changes" comment="" />
+    <list default="true" id="07e08fb4-8406-4bf8-9578-46d00e98871f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/shop/polls/templates/registration/entering.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/shop/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/polls/templates/polls/burkoff_shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/polls/templates/polls/burkoff_shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/polls/templates/polls/redacting.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/polls/templates/polls/redacting.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/polls/templates/polls/redactor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/polls/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/polls/templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/polls/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/polls/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/polls/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ulala.py" beforeDir="false" afterPath="$PROJECT_DIR$/ulala.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -154,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665850428129</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="some changes">
+      <created>1669741280778</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669741280778</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,6 +190,7 @@
     <MESSAGE value="starting django project" />
     <MESSAGE value="add some simple models, and start working with them" />
     <MESSAGE value="nothing" />
-    <option name="LAST_COMMIT_MESSAGE" value="nothing" />
+    <MESSAGE value="some changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes" />
   </component>
 </project>

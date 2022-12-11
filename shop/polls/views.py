@@ -59,18 +59,33 @@ def check_event(request):
     else:
         return HttpResponse('Error in adding event')
 
-
-def redactor(request):
-    external_id = request.user.id
-    event_exist = Event.objects.filter(external_id=external_id)
-    return render(request, 'polls/redactor.html', {'events': event_exist})
-
 def redacting(request, id):
     external_id = request.user.id
     event_id = id
     event_exist = Event.objects.filter(external_id=external_id, id=event_id)
     return render(request, 'polls/redacting.html', {'events': event_exist})
 
+def delete_event(request, id):
+    external_id = request.user.id
+    event_id = id
+
+    event = Event.objects.filter(external_id=external_id, id=event_id)
+    event.delete()
+    return HttpResponseRedirect('/burkoff')
+
+def redacting_event(request, id):
+    if request.method == 'POST':
+        event = Event()
+        external_id = request.user.id
+        event_id = id
+        event.name = request.POST.get("name")
+        event.text = request.POST.get("text")
+        event.date = request.POST.get("date")
+
+        event_red = Event.objects.filter(external_id=external_id, id=event_id).update(name=event.name,
+                                                                                      text=event.text,
+                                                                                      )
+        return HttpResponseRedirect("/burkoff")
 
 
 def check_redactor(request, id):

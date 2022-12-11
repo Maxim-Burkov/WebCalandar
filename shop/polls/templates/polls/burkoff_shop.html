@@ -24,9 +24,10 @@
 <section class="event_sec">
     <div class="wrapper">
         <p>{{ event.date|date:"d-m-Y" }}</p>
-        <h1><a class="event_name" href="/burkoff/redactor">{{ event.name }}</a></h1>
+        <h1><a class="event_name" href="{% url 'redacting' event.id %}">{{ event.name }}</a></h1>
         <p><textarea name="text" readonly>{{ event.text }}</textarea></p>
         <p>{{ event.id }}</p>
+        <p><a class="delete" href="{% url 'delete_event' event.id %}">Удалить событие</a></p>
     </div>
 </section>
 {% endfor %}

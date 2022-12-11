@@ -1,12 +1,28 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
     <title>Редактирование события</title>
 </head>
 <body>
     {% for event in events %}
-    <h1>{{ event.name }}</h1>
+    <div class="event_form">
+    <form method="POST" action="{% url 'redacting_event' event.id %}">
+        {% csrf_token %}
+        <p>
+            <p><textarea class="event_name" name="name" placeholder="Введите название">{{ event.name}}</textarea></p>
+        </p>
+        <p><textarea class="event_text" name="text" placeholder="Введите событие">{{ event.text }}</textarea></p>
+        <p>
+            <label>Введите дату</label><br>
+            <input type="date" name="date" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+</div>
+
     {% endfor %}
 </body>
 </html>
